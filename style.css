@@ -1,3 +1,39 @@
 body {
-    background-color: lightgray;
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+.content {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: .75fr 1fr 22fr;
+    grid-template-columns: 4fr 21fr;
+}
+
+.header {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    text-align: center;
+    background-color: #3F3C3C;
+    color: white;
+    padding: 10px 0px 10px;
+    font-weight: bold;
+}
+
+.nav {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    background-color: #E14E43;
+}
+
+.sidebar {
+    grid-column: 1 / 2;
+    background-color: #FAFAFA;
+
+}
+
+.project {
+    grid-column: 2 / 3;
+    background-color: #FFFFFF;
 }
