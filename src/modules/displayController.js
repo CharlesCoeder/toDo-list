@@ -1,13 +1,19 @@
 const displayController = (() => {
     const container = document.querySelector('.project')
 
-    const test = function(){
-        const testelement = document.createElement('div')
-        testelement.textContent = 'displayController module added this text'
-        container.appendChild(testelement)
+    const buildPage = function(entries){
+        for (const entry of entries){
+            showEntry(entry);
+        }
     }
 
-    return {test}
+    const showEntry = function(listEntry){
+        const entry = document.createElement('div')
+        entry.textContent = listEntry.title
+        container.appendChild(entry)
+    }
+
+    return {showEntry, buildPage}
 
 })();
 
