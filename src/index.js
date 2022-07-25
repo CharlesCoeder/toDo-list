@@ -1,4 +1,5 @@
 import {project} from './modules/project';
+import {displayController} from './modules/displayController';
 
 const prjct = project('test')
 prjct.addEntry('soonest, high-priority', 'abc', new Date(2021, 6, 12), 3)
@@ -15,3 +16,5 @@ console.log(JSON.parse(JSON.stringify(prjct.entries)));
 console.log('SORTED BY DUE DATE')
 prjct.sort('dueDate')
 console.log(JSON.parse(JSON.stringify(prjct.entries)));
+
+displayController.test()
