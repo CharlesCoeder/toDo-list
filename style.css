@@ -127,3 +127,77 @@ body {
 .description, .dueDate {
     font-size: .9rem;
 }
+
+hr {
+    background-color: #F0F0F0;
+    width: 100%;
+    grid-column: 1 / 3;
+}
+
+.form {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: white;
+
+    -moz-box-shadow: 0 0 50px #ccc;
+    -webkit-box-shadow: 0 0 50px #ccc;
+    box-shadow: 0 0 50px #ccc;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+form {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input[type="text"] {
+    border: 0;
+}
+
+
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+.finishButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.priorityRadios, .projectRadios {
+    display: none;
+    position: absolute;
+    background-color: white;
+
+    -moz-box-shadow: 0 0 50px #ccc;
+    -webkit-box-shadow: 0 0 50px #ccc;
+    box-shadow: 0 0 50px #ccc;
+    border-radius: 5px 5px 15px 15px;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+.options {
+    display: flex;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.priorityRadios > *, .projectRadios > * {
+    display: flex;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+
+}

@@ -23,6 +23,56 @@
             
             <input class="add" type="image" src="../src/plus.svg" alt="Add">
         </div>
+
+        <div class="form">
+            <form action="" autocomplete="off">
+                <input type="text" name="titleInput" id="titleInput" placeholder="Title">
+                <input type="text" name="descriptionInput" id="descriptionInput" placeholder="Description">
+                <!-- set date default to whatever today is  -->
+                
+                <div class="options">
+                    <button class="dueDateBtn" type="button">Due Date</button>
+
+                    <div class="dropdown">
+                        <button class="priorityBtn" type="button">Priority</button>
+                        <div class="priorityRadios">
+                            <div>
+                                <input type="radio" id="none" name="priority" value="none"
+                                    checked>
+                                <label for="huey">None</label>
+                            </div>
+                        
+                            <div>
+                                <input type="radio" id="low" name="priority" value="1">
+                                <label for="low">Low</label>
+                            </div>
+                        
+                            <div>
+                                <input type="radio" id="medium" name="priority" value="2">
+                                <label for="medium">Medium</label>
+                            </div>
+        
+                            <div>
+                                <input type="radio" id="high" name="priority" value="3">
+                                <label for="high">High</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown" id="projectDropdown">
+                        <button class="projectBtn" type="button">Project</button>
+                    </div>
+
+                </div>
+
+
+                <div class="finishButtons">
+                    <button class="cancelBtn" type="button">Cancel</button>
+                    <button class="finishBtn" type="button">Finish</button>
+                </div>
+
+            </form>
+        </div>
             
         <div class="sidebar">
             <ul>
@@ -41,27 +91,12 @@
                 <div class="sort">
                     <button>Sort</button>
                 </div>
-
             </div>
+
             <div class="entries">
-                <div class="entry">
-                    <div class="title">Red Hat</div>
-                    <div class="dueDate">Jul 5</div>
-                    <div class="description">test</div>
-                    <button class="checkbox"></div>
-                    <hr style="width: 100%">
-                </div>
 
-                <div class="entries">
-                    <div class="entry">
-                        <div class="title">Red Hat</div>
-                        <div class="dueDate">Jul 5</div>
-                        <div class="description">test</div>
-                        <button class="checkbox"></div>
-                            <hr style="width: 100%">
-                    </div>                
             </div>
-
+            
         </div>
 
     </div>
