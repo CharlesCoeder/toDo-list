@@ -1,10 +1,19 @@
-import {project} from './modules/project';
+import {projects, currentProject} from './modules/projectController';
 import {displayController} from './modules/displayController';
 
-const defaultProject = project('Inbox')
 
-defaultProject.addEntry('soonest, high-priority', 'abc', new Date(2021, 6, 12), 3)
-defaultProject.addEntry("latest, middle-priority", "def", new Date(2025, 6, 12), 2);
-defaultProject.addEntry('middle, low-priority', 'ghi', new Date(2023, 6, 12), 1)
+displayController.buildPage(projects.get('Inbox'))
 
-displayController.buildPage(defaultProject.entries)
+// form submission functionality
+const form = document.querySelector('.form')
+form.onsubmit = function(){
+    const title = document.getElementById('titleInput').value
+    const description = document.getElementById('descriptionInput').value
+    const priority = document.querySelector('input[name="priority"]:checked').value;
+
+    const entry = projects.get(currentProject).addEntry(title, description, new Date(2022, 7, 14), priority)
+    displayController.showEntry(entry)
+
+    displayController.clearForm();
+    return false;
+}

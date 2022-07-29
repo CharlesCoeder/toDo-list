@@ -1,15 +1,13 @@
 import {project} from '../modules/project';
 
-let projects = [];
+let projects = new Map();
+let currentProject = 'Inbox'
 
-const defaultProject = project('Inbox')
-projects.push(defaultProject);
+projects.set('Inbox', project('Inbox'))
+projects.set('Chores', project('Chores'))
 
-const chores = project('Chores')
-projects.push(chores)
+projects.get('Inbox').addEntry('soonest, high-priority', 'abc', new Date(2021, 6, 12), 3);
+projects.get('Inbox').addEntry("latest, middle-priority", "def", new Date(2025, 6, 12), 2);
+projects.get('Inbox').addEntry('middle, low-priority', 'ghi', new Date(2023, 6, 12), 1)
 
-defaultProject.addEntry('soonest, high-priority', 'abc', new Date(2021, 6, 12), 3)
-defaultProject.addEntry("latest, middle-priority", "def", new Date(2025, 6, 12), 2);
-defaultProject.addEntry('middle, low-priority', 'ghi', new Date(2023, 6, 12), 1)
-
-export {projects}
+export {projects, currentProject}

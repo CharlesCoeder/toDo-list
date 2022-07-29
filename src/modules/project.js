@@ -5,6 +5,7 @@ const project = (name) => {
     const addEntry = function(title, description, dueDate, priority){
         const entry = listEntry(title, description, dueDate, priority)
         this.entries.push(entry)
+        return entry;
     }
 
     const sort = function(sortingMethod){
