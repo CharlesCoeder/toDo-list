@@ -24,7 +24,17 @@
             <input class="add" type="image" src="../src/plus.svg" alt="Add">
         </div>
 
-        <div class="form">
+        <div class="form project-form">
+            <form action="" autocomplete="off">
+                <input type="text" name="name" id="nameInput" placeholder="Project name">
+                <div class="finishButtons">
+                    <button class="projectCancelBtn" type="button">Cancel</button>
+                    <button class="projectFinishBtn" type="submit">Finish</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="form entry-form">
             <form action="" autocomplete="off">
                 <input type="text" name="titleInput" id="titleInput" placeholder="Title">
                 <input type="text" name="descriptionInput" id="descriptionInput" placeholder="Description">
@@ -75,6 +85,10 @@
         </div>
             
         <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>Projects</h1>
+                <input class="project-add" type="image" src="../src/plus-black.svg" alt="New Project">
+            </div>
             <ul>
                 <li>Today</li>
                 <li>Exercise</li>
