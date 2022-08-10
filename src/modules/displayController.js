@@ -41,7 +41,7 @@ const displayController = (() => {
     }
 
     // show and hide form
-    const form = document.querySelector('.form');
+    const form = document.querySelector('.entry-form');
 
     function showForm(){
         form.setAttribute('style', 'display:block');
@@ -123,6 +123,8 @@ const displayController = (() => {
     const projectDropdown = document.getElementById('projectDropdown');
     function buildProjectsDropdown(){
 
+        // have default project selected be the current project
+
         const projectRadios = document.createElement('div');
         projectRadios.classList.add('projectRadios')
         
@@ -157,15 +159,14 @@ const displayController = (() => {
         }
 
         projectDropdown.appendChild(projectRadios);
-
+        return projectRadios;
     }
 
     // show and hide project dropdown
     const projectBtn = document.querySelector('.projectBtn')
-    buildProjectsDropdown();
-    const projectRadios = document.querySelector('.projectRadios')
-
+    let projectRadios = buildProjectsDropdown();
     projectBtn.addEventListener('click', () => {
+        projectRadios = buildProjectsDropdown();
         projectRadios.setAttribute('style', 'display: block')
         dropdownIsShown = true;
         document.addEventListener('mouseup', hideProjectDropdown); 
@@ -193,13 +194,57 @@ const displayController = (() => {
 
     }
 
-    // cancel and finish button functionality
+    // cancel buttons
     const cancelBtn = document.querySelector('.cancelBtn');
     cancelBtn.addEventListener('click', () => {
         clearForm();
     });
 
-    return {showEntry, buildPage, clearForm}
+    const projectCancelBtn = document.querySelector('.projectCancelBtn');
+    projectCancelBtn.addEventListener('click', () => {
+        clearProjectForm();
+    })
+
+
+    // project form
+    const projectForm = document.querySelector('.project-form');
+
+    function showProjectForm(){
+        projectForm.setAttribute('style', 'display:block');
+        document.addEventListener('mouseup', hideProjectForm);
+        document.addEventListener('keydown', hideProjectForm);
+    }
+
+    const projectAdd = document.querySelector('.project-add')
+    projectAdd.addEventListener('click', () => {
+        showProjectForm();
+    })
+
+    const nameInput = document.getElementById('nameInput')
+    function clearProjectForm(){
+        nameInput.value = "";
+        projectForm.setAttribute('style', 'display: none')
+    }
+
+    function hideProjectForm(e){
+        if (e.type === "mouseup"){
+            if (!projectForm.contains(e.target)){
+                document.removeEventListener('mouseup', hideProjectForm);
+                document.removeEventListener('keydown', hideProjectForm);
+                clearProjectForm();
+            }
+        }
+
+        else if (e.type === "keydown"){
+            if (e.key === "Escape"){
+                document.removeEventListener('mouseup', hideProjectForm);
+                document.removeEventListener('keydown', hideProjectForm);
+                clearProjectForm();
+            }
+        }
+    }
+
+    return {showEntry, buildPage, clearForm, clearProjectForm}
 
 })();
 

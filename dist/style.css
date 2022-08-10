@@ -41,12 +41,13 @@ body {
     height: 25px;
 }
 
-.add {
+.add, .project-add {
     width: 30px;
     height: 30px;
     margin-left: 10px;
     justify-self: left;
     align-self: center;
+    grid-column: 2 / 3;
 }
 
 .search {
@@ -63,10 +64,6 @@ body {
 
 .search::placeholder {
     color: white;
-}
-
-.add {
-    grid-column: 2 / 3;
 }
 
 .sidebar {
@@ -140,14 +137,20 @@ hr {
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     background-color: white;
-
     -moz-box-shadow: 0 0 50px #ccc;
     -webkit-box-shadow: 0 0 50px #ccc;
     box-shadow: 0 0 50px #ccc;
     padding: 30px;
     border-radius: 10px;
+}
+
+.entry-form {
+
+}
+
+.project-form {
+    flex-direction: row;
 }
 
 form {
@@ -181,7 +184,7 @@ input[type="text"]:focus {
     -moz-box-shadow: 0 0 50px #ccc;
     -webkit-box-shadow: 0 0 50px #ccc;
     box-shadow: 0 0 50px #ccc;
-    border-radius: 5px 5px 15px 15px;
+    border-radius: 5px 15px 15px 15px;
     overflow: hidden;
     padding-bottom: 10px;
 }
@@ -197,7 +200,21 @@ input[type="text"]:focus {
 .priorityRadios > *, .projectRadios > * {
     display: flex;
     background-color: white;
-    padding: 10px;
+    padding: 10px 15px 10px 10px;
     text-align: center;
+    white-space: nowrap;
+}
 
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sidebar-header > h1 {
+    margin-left: 10px;
+}
+
+.sidebar-header > input {
+    margin-right: 10px;
 }
