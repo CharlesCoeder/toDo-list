@@ -1,5 +1,7 @@
 import {projects, currentProject, projectController} from './modules/projectController';
 import {displayController} from './modules/displayController';
+import '../node_modules/flatpickr/dist/themes/material_red.css';
+import {datePicker} from './modules/datePicker'
 
 
 displayController.buildPage(projects.get('Inbox'))

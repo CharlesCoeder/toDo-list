@@ -145,10 +145,6 @@ hr {
     border-radius: 10px;
 }
 
-.entry-form {
-
-}
-
 .project-form {
     flex-direction: row;
 }
@@ -191,6 +187,7 @@ input[type="text"]:focus {
 
 .options {
     display: flex;
+    gap: 10px;
 }
 
 .dropdown {
@@ -217,4 +214,12 @@ input[type="text"]:focus {
 
 .sidebar-header > input {
     margin-right: 10px;
+}
+
+.datePicker, .priorityBtn, .projectBtn {
+    background-color: rgb(236, 236, 236);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 135px;
 }
