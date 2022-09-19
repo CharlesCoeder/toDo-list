@@ -1,4 +1,5 @@
 import {projects} from "../modules/projectController"
+import {datePicker} from "./datePicker";
 
 const displayController = (() => {
     const container = document.querySelector('.entries')
@@ -62,6 +63,7 @@ const displayController = (() => {
         descriptionInput.value = "";
         const defaultPriority = document.getElementById('none');
         defaultPriority.checked = true;
+        datePicker.clear();
         form.setAttribute('style', 'display: none')
 
         // figure out how to reset the project dropdown menu
@@ -164,7 +166,7 @@ const displayController = (() => {
 
     // show and hide project dropdown
     const projectBtn = document.querySelector('.projectBtn')
-    let projectRadios = buildProjectsDropdown();
+    let projectRadios;
     projectBtn.addEventListener('click', () => {
         projectRadios = buildProjectsDropdown();
         projectRadios.setAttribute('style', 'display: block')
@@ -176,7 +178,8 @@ const displayController = (() => {
     function hideProjectDropdown(e){
         if (e.type === "mouseup"){
             if (!projectRadios.contains(e.target)){
-                projectRadios.setAttribute('style', 'display:none');
+                projectDropdown.removeChild(projectRadios);
+                projectRadios = null;
                 document.removeEventListener('mouseup', hideProjectDropdown);
                 document.removeEventListener('keydown', hideProjectDropdown);
                 dropdownIsShown = false;
@@ -186,6 +189,7 @@ const displayController = (() => {
         else if (e.type === "keydown"){
             if (e.key === "Escape"){
                 projectRadios.setAttribute('style', 'display: none');
+                projectDropdown.removeChild(projectRadios);
                 document.removeEventListener('mouseup', hideProjectDropdown);
                 document.removeEventListener('keydown', hideProjectDropdown);
                 dropdownIsShown = false;

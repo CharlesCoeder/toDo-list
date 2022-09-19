@@ -173,7 +173,6 @@ input[type="text"]:focus {
 }
 
 .priorityRadios, .projectRadios {
-    display: none;
     position: absolute;
     background-color: white;
 
@@ -183,6 +182,10 @@ input[type="text"]:focus {
     border-radius: 5px 15px 15px 15px;
     overflow: hidden;
     padding-bottom: 10px;
+}
+
+.priorityRadios {
+    display: none;
 }
 
 .options {
