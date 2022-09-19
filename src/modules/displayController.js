@@ -22,9 +22,21 @@ const displayController = (() => {
         dueDate.classList.add('dueDate')
         description.classList.add('description')
         
-        const checkbox = document.createElement('button')
-        checkbox.classList.add('checkbox')
-        checkbox.setAttribute('type', 'button')
+        const completedBtn = document.createElement('button')
+        completedBtn.classList.add('completedBtn')
+        completedBtn.setAttribute('type', 'button')
+        if (listEntry.priority == 3){
+            completedBtn.setAttribute('style', 'background-color: red')
+        }
+        else if (listEntry.priority == 2){
+            completedBtn.setAttribute('style', 'background-color: #F18B2B')
+        }
+        else if (listEntry.priority == 1){
+            completedBtn.setAttribute('style', 'background-color: #0B6ADB')
+        }
+        else {
+            completedBtn.setAttribute('style', 'background-color: white')
+        }
 
         title.textContent = listEntry.title
         dueDate.textContent = listEntry.dueDate
@@ -33,7 +45,7 @@ const displayController = (() => {
         entry.appendChild(title)
         entry.appendChild(description)
         entry.appendChild(dueDate)
-        entry.appendChild(checkbox)
+        entry.appendChild(completedBtn)
 
         const line = document.createElement('hr')
         entry.appendChild(line)
@@ -65,8 +77,6 @@ const displayController = (() => {
         defaultPriority.checked = true;
         datePicker.clear();
         form.setAttribute('style', 'display: none')
-
-        // figure out how to reset the project dropdown menu
     }
 
     function hideForm(e){
