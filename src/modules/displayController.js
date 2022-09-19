@@ -26,7 +26,7 @@ const displayController = (() => {
         completedBtn.classList.add('completedBtn')
         completedBtn.setAttribute('type', 'button')
         if (listEntry.priority == 3){
-            completedBtn.setAttribute('style', 'background-color: red')
+            completedBtn.setAttribute('style', 'background-color: #E14E43')
         }
         else if (listEntry.priority == 2){
             completedBtn.setAttribute('style', 'background-color: #F18B2B')
@@ -39,7 +39,7 @@ const displayController = (() => {
         }
 
         title.textContent = listEntry.title
-        dueDate.textContent = listEntry.dueDate
+        dueDate.textContent = listEntry.dueDate.toDateString();
         description.textContent = listEntry.description
 
         entry.appendChild(title)
