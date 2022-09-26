@@ -226,3 +226,7 @@ input[type="text"]:focus {
     cursor: pointer;
     width: 135px;
 }
+
+.projects > li {
+    cursor: pointer;
+}
