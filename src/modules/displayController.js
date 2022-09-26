@@ -1,10 +1,16 @@
-import {projects} from "../modules/projectController"
+import {projects, currentProject} from "../modules/projectController"
 import {datePicker} from "./datePicker";
 
 const displayController = (() => {
     const container = document.querySelector('.entries')
 
     const buildPage = function(project){
+        // clears existing page
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+        document.querySelector('.project-name').textContent = project.name;
+
         for (const entry of project.entries){
             showEntry(entry);
         }
@@ -178,8 +184,10 @@ const displayController = (() => {
     const projectBtn = document.querySelector('.projectBtn')
     let projectRadios;
     projectBtn.addEventListener('click', () => {
+        if (projectRadios != null){
+            projectDropdown.removeChild(projectRadios);
+        }
         projectRadios = buildProjectsDropdown();
-        projectRadios.setAttribute('style', 'display: block')
         dropdownIsShown = true;
         document.addEventListener('mouseup', hideProjectDropdown); 
         document.addEventListener('keydown', hideProjectDropdown);
@@ -188,8 +196,7 @@ const displayController = (() => {
     function hideProjectDropdown(e){
         if (e.type === "mouseup"){
             if (!projectRadios.contains(e.target)){
-                projectDropdown.removeChild(projectRadios);
-                projectRadios = null;
+                projectRadios.setAttribute('style', 'display: none');
                 document.removeEventListener('mouseup', hideProjectDropdown);
                 document.removeEventListener('keydown', hideProjectDropdown);
                 dropdownIsShown = false;
@@ -258,7 +265,22 @@ const displayController = (() => {
         }
     }
 
-    return {showEntry, buildPage, clearForm, clearProjectForm}
+    const projectsList = document.querySelector('.projects')
+    // adds project to sidebar
+    function showProject(project){
+        const newProj = document.createElement('li');
+        newProj.textContent = project
+        projectsList.appendChild(newProj);
+
+        // when project is clicked, show its entries on screen
+        newProj.addEventListener('click', () => {
+            currentProject = newProj.textContent;
+            buildPage(projects.get(currentProject));
+        })
+
+    }
+
+    return {showEntry, buildPage, clearForm, clearProjectForm, showProject}
 
 })();
 
