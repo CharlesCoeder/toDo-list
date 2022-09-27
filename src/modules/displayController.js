@@ -22,11 +22,9 @@ const displayController = (() => {
 
         const title = document.createElement('div')
         const dueDate = document.createElement('div')
-        const description = document.createElement('div')
         
         title.classList.add('title')
         dueDate.classList.add('dueDate')
-        description.classList.add('description')
         
         const completedBtn = document.createElement('button')
         completedBtn.classList.add('completedBtn')
@@ -46,10 +44,16 @@ const displayController = (() => {
 
         title.textContent = listEntry.title
         dueDate.textContent = listEntry.dueDate.toDateString();
-        description.textContent = listEntry.description
 
         entry.appendChild(title)
-        entry.appendChild(description)
+        // only make div for description if it is nonempty
+        if (!listEntry.description == ""){
+            const description = document.createElement('div')
+            description.classList.add('description')
+            description.textContent = listEntry.description
+            entry.appendChild(description)
+        }       
+
         entry.appendChild(dueDate)
         entry.appendChild(completedBtn)
 
