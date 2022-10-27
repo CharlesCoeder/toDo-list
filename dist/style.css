@@ -105,7 +105,6 @@ body {
     width: 100%;
     display: grid;
     grid-template-columns: auto 5fr;
-    grid-template-rows: 1fr .8fr .8fr;
 }
 
 .completedBtn {

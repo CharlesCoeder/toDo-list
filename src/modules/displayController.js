@@ -21,10 +21,8 @@ const displayController = (() => {
         entry.classList.add('entry')
 
         const title = document.createElement('div')
-        const dueDate = document.createElement('div')
         
         title.classList.add('title')
-        dueDate.classList.add('dueDate')
         
         const completedBtn = document.createElement('button')
         completedBtn.classList.add('completedBtn')
@@ -43,7 +41,6 @@ const displayController = (() => {
         }
 
         title.textContent = listEntry.title
-        dueDate.textContent = listEntry.dueDate.toDateString();
 
         entry.appendChild(title)
         // only make div for description if it is nonempty
@@ -54,7 +51,14 @@ const displayController = (() => {
             entry.appendChild(description)
         }       
 
-        entry.appendChild(dueDate)
+        // only make div for dueDate if a date has been selected
+        if (!listEntry.dueDate.getTime() == new Date(0).getTime()){
+            const dueDate = document.createElement('div')
+            dueDate.classList.add('dueDate')
+            dueDate.textContent = listEntry.dueDate.toDateString();
+            entry.appendChild(dueDate)
+        }
+        
         entry.appendChild(completedBtn)
 
         const line = document.createElement('hr')

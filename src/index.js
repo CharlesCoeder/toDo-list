@@ -37,7 +37,12 @@ form.onsubmit = function(){
     const title = document.getElementById('titleInput').value
     const description = document.getElementById('descriptionInput').value
     const priority = document.querySelector('input[name="priority"]:checked').value;
-    const date = datePicker.selectedDates[0]
+    let date = new Date(0);
+
+    // if date has been selected in datePicker, update date value
+    if (datePicker.selectedDates.length > 0){
+        date = datePicker.selectedDates[0]
+    }
 
     // add new entry to project using parsed inputs
     const entry = projects.get(currentProject).addEntry(title, description, date, priority)
