@@ -2,7 +2,10 @@ import {projects, currentProject} from "../modules/projectController"
 import {datePicker} from "./datePicker";
 
 const displayController = (() => {
-    const container = document.querySelector('.entries')
+        let sortMethod = 'addDate';
+        let sortOrder = 'ascending';
+
+        const container = document.querySelector('.entries')
 
     const buildPage = function(project){
         // clears existing page
@@ -10,6 +13,9 @@ const displayController = (() => {
             container.removeChild(container.firstChild);
         }
         document.querySelector('.project-name').textContent = project.name;
+
+        // sort project
+        project.sort(sortMethod, sortOrder)
 
         for (const entry of project.entries){
             showEntry(entry);
@@ -89,6 +95,13 @@ const displayController = (() => {
         descriptionInput.value = "";
         const defaultPriority = document.getElementById('none');
         defaultPriority.checked = true;
+        
+        // reset checked project to currently shown one
+        for (const radio of document.getElementsByName('projects')){
+            if (radio.id == currentProject){
+                radio.checked = true;
+            }
+        }
         datePicker.clear();
         form.setAttribute('style', 'display: none')
     }
@@ -223,6 +236,37 @@ const displayController = (() => {
 
     }
 
+        // show and hide sort dropdown
+        const sortBtn = document.querySelector('.sortBtn');
+        const sortRadios = document.querySelector('.sortRadios');
+    
+        sortBtn.addEventListener('click', () => {
+            dropdownIsShown = true;
+            sortRadios.setAttribute('style', 'display: block');
+            document.addEventListener('mouseup', hideSortDropdown); 
+            document.addEventListener('keydown', hideSortDropdown);
+        })
+    
+        function hideSortDropdown(e){
+            if (e.type === "mouseup"){
+                if (!sortRadios.contains(e.target)){
+                    sortRadios.setAttribute('style', 'display:none');
+                    document.removeEventListener('mouseup', hideSortDropdown);
+                    document.removeEventListener('keydown', hideSortDropdown);
+                    dropdownIsShown = false;
+                }
+            }
+    
+            else if (e.type === "keydown"){
+                if (e.key === "Escape"){
+                    sortRadios.setAttribute('style', 'display: none');
+                    document.removeEventListener('mouseup', hideSortDropdown);
+                    document.removeEventListener('keydown', hideSortDropdown);
+                    dropdownIsShown = false;
+                }
+            }
+        }
+
     // cancel buttons
     const cancelBtn = document.querySelector('.cancelBtn');
     cancelBtn.addEventListener('click', () => {
@@ -287,6 +331,26 @@ const displayController = (() => {
         })
 
     }
+
+    // sorting event listener
+    const sortBy_Radios = document.getElementsByName('sort');
+
+    for (const element of sortBy_Radios){
+        element.addEventListener('change', () => {
+            sortMethod = element.value;
+            buildPage(projects.get(currentProject));
+        })
+    }
+
+    const sortOrderRadios = document.getElementsByName('sortOrder');
+
+    for (const element of sortOrderRadios){
+        element.addEventListener('change', () => {
+            sortOrder = element.value;
+            buildPage(projects.get(currentProject));
+        })
+    }
+
 
     return {showEntry, buildPage, clearForm, clearProjectForm, showProject}
 

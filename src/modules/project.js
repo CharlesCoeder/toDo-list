@@ -8,7 +8,7 @@ const project = (name) => {
         return entry;
     }
 
-    const sort = function(sortingMethod){
+    const sort = function(sortingMethod, order){
         const methods = ['addDate', 'dueDate', 'priority'];
         // sortingMethod = sortingMethod.toLowerCase();
 
@@ -16,7 +16,13 @@ const project = (name) => {
             throw 'Invalid sorting method. Options: addDate, dueDate, priority'
         }
 
-        this.entries = this.entries.sort((a,b) => (a[sortingMethod] > b[sortingMethod]) ? 1 : -1)
+        if (order == 'ascending'){
+            this.entries = this.entries.sort((a,b) => (a[sortingMethod] > b[sortingMethod]) ? 1 : -1)
+        }
+
+        else if (order == 'descending'){
+            this.entries = this.entries.sort((a,b) => (a[sortingMethod] > b[sortingMethod]) ? -1 : 1)
+        }
     }
 
     let entries = [];

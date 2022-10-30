@@ -23,14 +23,15 @@ displayController.buildPage(projects.get('Inbox'))
 const form = document.querySelector('.entry-form')
 form.onsubmit = function(){
     const prevProject = currentProject;
+    let selectedProject;
 
-    // set current project as the checked project radio. if no project selected, default to Inbox
+    // if no project selected in form, default to the currently displayed project
     const project = document.querySelector('input[name="projects"]:checked');
     if (project) {
-        currentProject = project.id
+        selectedProject = project.id
     }
     else {
-        currentProject = 'Inbox';
+        selectedProject = currentProject;
     }
 
     // parse form inputs
@@ -45,11 +46,11 @@ form.onsubmit = function(){
     }
 
     // add new entry to project using parsed inputs
-    const entry = projects.get(currentProject).addEntry(title, description, date, priority)
+    const entry = projects.get(selectedProject).addEntry(title, description, date, priority)
 
-    // if adding to the currently shown project, then go ahead and show the new entry on screen (without rebuilding entire page)
+    // if adding to the currently shown project, then update the page
     if (prevProject == currentProject){
-        displayController.showEntry(entry)
+        displayController.buildPage(projects.get(currentProject))
     }
     displayController.clearForm();
     return false;
