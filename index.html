@@ -98,8 +98,41 @@
 
             <div class="project-header">
                 <div class="project-name">Inbox</div>
-                <div class="sort">
-                    <button>Sort</button>
+                <div class="dropdown">
+                    <input class="sortBtn" type="image" src="assets/sort.svg" alt="Sort">
+                    <div class="sortRadios">
+                        <div class="separator">Sort By</div>
+                        <div>
+                            <input type="radio" id="addDate" name="sort" value="addDate"
+                                checked>
+                            <label for="addDate">Add Date</label>
+                        </div>
+                    
+                        <div>
+                            <input type="radio" id="dueDate" name="sort" value="dueDate">
+                            <label for="dueDate">Due Date</label>
+                        </div>
+                    
+                        <div>
+                            <input type="radio" id="priority" name="sort" value="priority">
+                            <label for="priority">Priority</label>
+                        </div>
+
+                        <div class="separator">Order</div>
+
+                        <div>
+                            <input type="radio" id="ascending" name="sortOrder" value="ascending"
+                                checked>
+                            <label for="ascending">Ascending</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="descending" name="sortOrder" value="descending">
+                            <label for="descending">Descending</label>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
 

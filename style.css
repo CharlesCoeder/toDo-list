@@ -171,7 +171,7 @@ input[type="text"]:focus {
     gap: 8px;
 }
 
-.priorityRadios, .projectRadios {
+.priorityRadios, .projectRadios, .sortRadios {
     position: absolute;
     background-color: white;
 
@@ -183,7 +183,11 @@ input[type="text"]:focus {
     padding-bottom: 10px;
 }
 
-.priorityRadios {
+.sortRadios {
+border-radius: 15px 5px 15px 15px;
+}
+
+.priorityRadios, .sortRadios {
     display: none;
 }
 
@@ -196,7 +200,7 @@ input[type="text"]:focus {
     position: relative;
 }
 
-.priorityRadios > *, .projectRadios > * {
+.priorityRadios > *, .projectRadios > *, .sortRadios > * {
     display: flex;
     background-color: white;
     padding: 10px 15px 10px 10px;
@@ -228,4 +232,22 @@ input[type="text"]:focus {
 
 .projects > li {
     cursor: pointer;
+}
+
+.sortBtn {
+    width: 28px;
+    height: 28px;
+}
+
+.sortRadios {
+    right: calc(100% - 28px);
+}
+
+.separator {
+    background-color: #E14E43;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 4px 0px 4px;
+    display: inline-block;
 }
