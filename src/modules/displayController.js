@@ -46,6 +46,19 @@ const displayController = (() => {
             completedBtn.setAttribute('style', 'background-color: white')
         }
 
+        entry.object = listEntry;
+        completedBtn.addEventListener('click', () => {
+            // remove from DOM
+            container.removeChild(entry)
+
+            // remove from project's list of entries
+            const array = projects.get(currentProject).entries
+            var index = array.indexOf(entry.object);
+            if (index !== -1) {
+                array.splice(index, 1);
+            }
+        })
+
         title.textContent = listEntry.title
 
         entry.appendChild(title)
