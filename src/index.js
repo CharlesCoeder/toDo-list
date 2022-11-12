@@ -10,12 +10,12 @@ createAndShowProject('Inbox');
 createAndShowProject('Chores')
 createAndShowProject('School')
 projects.get('Inbox').addEntry('soonest, high-priority', 'abc', new Date(2021, 6, 12), 3);
-projects.get('Inbox').addEntry("latest, middle-priority", "def", new Date(2025, 6, 12), 2);
-projects.get('Inbox').addEntry('middle, low-priority', 'ghi', new Date(2023, 6, 12), 1)
+setTimeout(() => {projects.get('Inbox').addEntry("latest, middle-priority", "def", new Date(2025, 6, 12), 2);}, 1);
+setTimeout(() => {projects.get('Inbox').addEntry('middle, low-priority', 'ghi', new Date(2023, 6, 12), 1)}, 10);
 projects.get('Chores').addEntry('Wipe the piano', 'cleaner is under the sink', new Date(2022, 9, 30), 0)
 projects.get('School').addEntry('Data Structures homework', 'Stacks and Queues', new Date(2022, 8, 27), 3)
 
-displayController.buildPage(projects.get('Inbox'))
+setTimeout(() => {displayController.buildPage(projects.get('Inbox'))}, 20);
 
 //////////////////////////////////
 // adding entry form submission //

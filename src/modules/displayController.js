@@ -34,16 +34,16 @@ const displayController = (() => {
         completedBtn.classList.add('completedBtn')
         completedBtn.setAttribute('type', 'button')
         if (listEntry.priority == 3){
-            completedBtn.setAttribute('style', 'background-color: #E14E43')
+            completedBtn.classList.add('red')
         }
         else if (listEntry.priority == 2){
-            completedBtn.setAttribute('style', 'background-color: #F18B2B')
+            completedBtn.classList.add('orange')
         }
         else if (listEntry.priority == 1){
-            completedBtn.setAttribute('style', 'background-color: #0B6ADB')
+            completedBtn.classList.add('blue')
         }
         else {
-            completedBtn.setAttribute('style', 'background-color: white')
+            completedBtn.classList.add('grey')
         }
 
         entry.object = listEntry;
